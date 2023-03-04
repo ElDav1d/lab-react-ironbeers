@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BeerForm from "../components/BeerForm";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 
 function NewBeer() {
   const [isSending, setIsSending] = useState(false);

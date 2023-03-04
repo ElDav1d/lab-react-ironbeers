@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import BeerDetail from "../components/BeerDetail";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 
 function SingleBeer() {
   const { beerName, beerId } = useParams();

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import SearchForm from "../components/SearchForm";
 import BeerList from "../components/BeerList";
 

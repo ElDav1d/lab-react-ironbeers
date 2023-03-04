@@ -1,3 +1,12 @@
+:root {
+  --color-primary: #32c3ff;
+}
+
 .App {
-  text-align: center;
+  --bs-link-hover-color: black;
+  --bs-link-color: black;
+}
+
+.App a {
+  text-decoration: none;
 }
