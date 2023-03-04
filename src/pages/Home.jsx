@@ -28,7 +28,7 @@ function Home() {
           ataquerl ahorarr pupita va usté muy cargadoo.
         </p>
       </NavLink>
-      <NavLink to={"/new-beers"}>
+      <NavLink to={"/new-beer"}>
         <img src={newBeer} alt="New Beer" />
         <h2>New Beer</h2>
         <p>
