@@ -18,7 +18,7 @@ function Home() {
         </p>
       </NavLink>
       <NavLink to={"/random-beers"}>
-        <img src={newBeer} alt="Random Beer" />
+        <img src={randomBeer} alt="Random Beer" />
         <h2>Random Beer</h2>
         <p>
           Lorem fistrum tiene musho peligro apetecan benemeritaar ese que llega
@@ -29,7 +29,7 @@ function Home() {
         </p>
       </NavLink>
       <NavLink to={"/new-beers"}>
-        <img src={randomBeer} alt="New Beer" />
+        <img src={newBeer} alt="New Beer" />
         <h2>New Beer</h2>
         <p>
           Lorem fistrum tiene musho peligro apetecan benemeritaar ese que llega
