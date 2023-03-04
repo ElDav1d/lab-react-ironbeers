@@ -2,22 +2,26 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import BeerList from "../components/BeerList";
 import Header from "../components/Header";
+import SearchForm from "../components/SearchForm";
+import BeerList from "../components/BeerList";
 
 function ListBeers() {
   const [beers, setBeers] = useState();
+  const [searchInput, setSearchInput] = useState("");
   const [isFetching, setIsFetching] = useState(true);
   const redirect = useNavigate();
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [searchInput]);
 
   const getData = async () => {
+    const query = searchInput ? `/search?q=${searchInput}` : "";
+
     try {
       const response = await axios.get(
-        "https://ih-beers-api2.herokuapp.com/beers"
+        `https://ih-beers-api2.herokuapp.com/beers${query}`
       );
       setBeers(response.data);
       setIsFetching(false);
@@ -31,6 +35,7 @@ function ListBeers() {
     <>
       <Header />
       <main>
+        <SearchForm setSearchInput={setSearchInput} />
         {isFetching ? <h2> ...loading</h2> : <BeerList beers={beers} />}
       </main>
     </>
