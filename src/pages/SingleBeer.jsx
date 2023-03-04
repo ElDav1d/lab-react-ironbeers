@@ -1,13 +1,12 @@
-import { useParams } from "react-router-dom";
+import BeerDetail from "../components/BeerDetail";
 import Header from "../components/Header";
-
 function SingleBeer() {
-  const { beerId } = useParams();
-
   return (
     <>
       <Header />
-      <h1>{beerId}</h1>;
+      <main>
+        <BeerDetail />
+      </main>
     </>
   );
 }
