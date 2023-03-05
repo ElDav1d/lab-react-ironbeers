@@ -10,3 +10,9 @@
 .App a {
   text-decoration: none;
 }
+
+@media (max-width: 575px) {
+  .App .container-sm {
+    padding: 0;
+  }
+}

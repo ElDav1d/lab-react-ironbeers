@@ -1,0 +1,7 @@
+@media (min-width: 768px) {
+  .home-container {
+    height: 100vh;
+    display: flex;
+    align-content: center;
+  }
+}
