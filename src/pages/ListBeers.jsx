@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useDebounce from "../hooks/useDebounce";
 import Header from "../components/Header/Header";
 import Layout from "../components/Layout/Layout";
 import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
@@ -12,10 +13,6 @@ function ListBeers() {
   const [searchInput, setSearchInput] = useState("");
   const [isFetching, setIsFetching] = useState(true);
   const redirect = useNavigate();
-
-  useEffect(() => {
-    getData();
-  }, [searchInput]);
 
   const getData = async () => {
     const query = searchInput ? `/search?q=${searchInput}` : "";
@@ -31,6 +28,9 @@ function ListBeers() {
       redirect("/error");
     }
   };
+
+  useDebounce(searchInput, 500, () => getData());
+
   return (
     <>
       <Header />
