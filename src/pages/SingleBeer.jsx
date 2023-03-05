@@ -33,7 +33,7 @@ function SingleBeer() {
       <Header />
       <Layout>
         {isFetching ? (
-          <LoadSpinner hidddenText="Loading" />
+          <LoadSpinner hidddenText={`Loading ${beerName}`} />
         ) : (
           <BeerDetail {...beer} />
         )}

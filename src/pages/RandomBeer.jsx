@@ -33,7 +33,7 @@ function RandomBeer() {
       <Header />
       <Layout>
         {isFetching ? (
-          <LoadSpinner hidddenText="Loading" />
+          <LoadSpinner hidddenText="Loading random beer" />
         ) : (
           <BeerDetail {...beer} />
         )}
