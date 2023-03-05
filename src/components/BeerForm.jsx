@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 function BeerForm({ setNewBeer, isSending }) {
   const cleanState = {
@@ -95,9 +97,9 @@ function BeerForm({ setNewBeer, isSending }) {
       />
       <br />
       <br />
-      <button onClick={handleSubmit} disabled={isSending}>
+      <Button onClick={handleSubmit} disabled={isSending}>
         ADD NEW
-      </button>
+      </Button>
     </form>
   );
 }

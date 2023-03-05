@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header/Header";
 import SearchForm from "../components/SearchForm";
 import BeerList from "../components/BeerList";
+import Layout from "../components/Layout/Layout";
 
 function ListBeers() {
   const [beers, setBeers] = useState();
@@ -30,14 +31,13 @@ function ListBeers() {
       redirect("/error");
     }
   };
-
   return (
     <>
       <Header />
-      <main>
+      <Layout>
         <SearchForm setSearchInput={setSearchInput} />
         {isFetching ? <h2> ...loading</h2> : <BeerList beers={beers} />}
-      </main>
+      </Layout>
     </>
   );
 }

@@ -4,7 +4,7 @@ import "./Header.css";
 
 function Header() {
   return (
-    <header>
+    <header className="header">
       <NavLink to="/">
         <HouseDoorFill color="white" size={32} />
       </NavLink>

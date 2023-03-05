@@ -1,12 +1,13 @@
-import BeerItem from "./BeerItem";
+import Row from "react-bootstrap/Row";
+import BeerItem from "./BeerItem/BeerItem";
 
 function BeerList({ beers }) {
   return (
-    <ul>
+    <Row as="ul">
       {beers.map((beer) => (
         <BeerItem key={beer._id} {...beer} />
       ))}
-    </ul>
+    </Row>
   );
 }
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BeerForm from "../components/BeerForm";
 import Header from "../components/Header/Header";
+import Layout from "../components/Layout/Layout";
 
 function NewBeer() {
   const [isSending, setIsSending] = useState(false);
@@ -37,9 +38,9 @@ function NewBeer() {
   return (
     <>
       <Header />
-      <main>
+      <Layout>
         <BeerForm setNewBeer={setNewBeer} isSending={isSending} />
-      </main>
+      </Layout>
     </>
   );
 }

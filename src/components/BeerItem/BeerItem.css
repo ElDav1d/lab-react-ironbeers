@@ -1,0 +1,10 @@
+.beer-item {
+  margin-bottom: 1rem;
+  min-height: 26rem;
+}
+
+.beer-item-image-top {
+  display: block;
+  margin: 1rem auto;
+  width: 3rem;
+}

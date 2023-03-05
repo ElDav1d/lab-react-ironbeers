@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import BeerDetail from "../components/BeerDetail";
 import Header from "../components/Header/Header";
+import Layout from "../components/Layout/Layout";
 
 function SingleBeer() {
   const { beerName, beerId } = useParams();
@@ -26,17 +27,16 @@ function SingleBeer() {
       redirect("/error");
     }
   };
-
   return (
     <>
       <Header />
-      <main>
+      <Layout>
         {isFetching ? (
           <h2> ...loading {beerName} </h2>
         ) : (
           <BeerDetail {...beer} />
         )}
-      </main>
+      </Layout>
     </>
   );
 }
