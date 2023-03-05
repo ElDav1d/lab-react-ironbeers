@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../components/Header/Header";
-import SearchForm from "../components/SearchForm";
+import SearchForm from "../components/SearchForm/SearchForm";
 import BeerList from "../components/BeerList";
 import Layout from "../components/Layout/Layout";
 
