@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import BeerDetail from "../components/BeerDetail";
 import Header from "../components/Header/Header";
 import Layout from "../components/Layout/Layout";
+import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
 
 function SingleBeer() {
   const { beerName, beerId } = useParams();
@@ -32,7 +33,7 @@ function SingleBeer() {
       <Header />
       <Layout>
         {isFetching ? (
-          <h2> ...loading {beerName} </h2>
+          <LoadSpinner hidddenText="Loading" />
         ) : (
           <BeerDetail {...beer} />
         )}

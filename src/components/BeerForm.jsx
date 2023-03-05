@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
 
 function BeerForm({ setNewBeer, isSending }) {
   const cleanState = {
@@ -97,9 +97,14 @@ function BeerForm({ setNewBeer, isSending }) {
       />
       <br />
       <br />
-      <Button onClick={handleSubmit} disabled={isSending}>
-        ADD NEW
-      </Button>
+
+      {isSending ? (
+        <LoadSpinner hidddenText="Sending new beer" />
+      ) : (
+        <Button onClick={handleSubmit} disabled={isSending}>
+          ADD NEW
+        </Button>
+      )}
     </form>
   );
 }

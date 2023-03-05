@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BeerDetail from "../components/BeerDetail";
 import Header from "../components/Header/Header";
+import Layout from "../components/Layout/Layout";
+import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
 
 function RandomBeer() {
   const [beer, setBeer] = useState(null);
@@ -29,9 +31,13 @@ function RandomBeer() {
   return (
     <>
       <Header />
-      <main>
-        {isFetching ? <h2> ...loading</h2> : <BeerDetail {...beer} />}
-      </main>
+      <Layout>
+        {isFetching ? (
+          <LoadSpinner hidddenText="Loading" />
+        ) : (
+          <BeerDetail {...beer} />
+        )}
+      </Layout>
     </>
   );
 }

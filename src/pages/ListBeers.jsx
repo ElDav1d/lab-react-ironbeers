@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import Header from "../components/Header/Header";
+import Layout from "../components/Layout/Layout";
+import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
 import SearchForm from "../components/SearchForm/SearchForm";
 import BeerList from "../components/BeerList";
-import Layout from "../components/Layout/Layout";
 
 function ListBeers() {
   const [beers, setBeers] = useState();
@@ -36,7 +36,11 @@ function ListBeers() {
       <Header />
       <Layout>
         <SearchForm setSearchInput={setSearchInput} />
-        {isFetching ? <h2> ...loading</h2> : <BeerList beers={beers} />}
+        {isFetching ? (
+          <LoadSpinner hidddenText="Loading" />
+        ) : (
+          <BeerList beers={beers} />
+        )}
       </Layout>
     </>
   );
