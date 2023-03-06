@@ -13,29 +13,29 @@ const NewBeerWrapper = (props) => {
     contributed_by: "",
   };
 
-  const [beerInput, setBeerInput] = useState(cleanState);
-  const [newBeer, setNewBeer] = useState(null);
+  const [beerContextInput, setBeerInput] = useState(cleanState);
+  const [newContextBeer, setNewBeer] = useState(null);
 
-  const handleBeerInput = (event) => {
-    const newBeerInput = { ...beerInput };
+  const handleContextBeerInput = (event) => {
+    const newBeerInput = { ...beerContextInput };
 
     newBeerInput[event.target.name] = event.target.value;
 
     setBeerInput(newBeerInput);
   };
 
-  const handleBeerSubmit = (event) => {
+  const handleBeerContextSubmit = (event) => {
     event.preventDefault();
 
-    setNewBeer(beerInput);
+    setNewBeer(beerContextInput);
     setBeerInput(cleanState);
   };
 
   const passedContext = {
-    beerInput,
-    newBeer,
-    handleBeerInput,
-    handleBeerSubmit,
+    beerContextInput,
+    newContextBeer,
+    handleContextBeerInput,
+    handleBeerContextSubmit,
   };
 
   return (

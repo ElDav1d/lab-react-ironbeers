@@ -9,13 +9,13 @@ import Layout from "../components/Layout/Layout";
 function NewBeer() {
   const [isSending, setIsSending] = useState(false);
   const redirect = useNavigate();
-  const { newBeer } = useContext(NewBeerContext);
+  const { newContextBeer } = useContext(NewBeerContext);
 
   useEffect(() => {
-    if (newBeer) {
+    if (newContextBeer) {
       sendData();
     }
-  }, [newBeer]);
+  }, [newContextBeer]);
 
   const sendData = async () => {
     try {
@@ -23,7 +23,7 @@ function NewBeer() {
 
       await axios.post(
         "https://ih-beers-api2.herokuapp.com/beers/new",
-        newBeer
+        newContextBeer
       );
 
       setIsSending(false);
