@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import useDebounce from "../hooks/useDebounce";
 import Header from "../components/Header/Header";
@@ -7,15 +7,16 @@ import Layout from "../components/Layout/Layout";
 import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
 import SearchForm from "../components/SearchForm/SearchForm";
 import BeerList from "../components/BeerList";
+import { SearchBeerContext } from "../context/searchBeer.context";
 
 function ListBeers() {
+  const { searchContextInput } = useContext(SearchBeerContext);
   const [beers, setBeers] = useState();
-  const [searchInput, setSearchInput] = useState("");
   const [isFetching, setIsFetching] = useState(true);
   const redirect = useNavigate();
 
   const getData = async () => {
-    const query = searchInput ? `/search?q=${searchInput}` : "";
+    const query = searchContextInput ? `/search?q=${searchContextInput}` : "";
 
     try {
       const response = await axios.get(
@@ -29,13 +30,13 @@ function ListBeers() {
     }
   };
 
-  useDebounce(searchInput, 500, () => getData());
+  useDebounce(searchContextInput, 500, () => getData());
 
   return (
     <>
       <Header />
       <Layout>
-        <SearchForm setSearchInput={setSearchInput} />
+        <SearchForm />
         {isFetching ? (
           <LoadSpinner hidddenText="Loading" />
         ) : (

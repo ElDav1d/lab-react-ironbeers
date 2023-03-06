@@ -6,14 +6,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { NewBeerWrapper } from "./context/newBeer.context";
+import { SearchBeerWrapper } from "./context/searchBeer.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
-    <NewBeerWrapper>
-      <App />
-    </NewBeerWrapper>
+    <SearchBeerWrapper>
+      <NewBeerWrapper>
+        <App />
+      </NewBeerWrapper>
+    </SearchBeerWrapper>
   </BrowserRouter>
 );
 

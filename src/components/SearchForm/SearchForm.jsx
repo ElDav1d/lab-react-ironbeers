@@ -1,10 +1,10 @@
+import { useContext } from "react";
+import { SearchBeerContext } from "../../context/searchBeer.context";
 import Form from "react-bootstrap/Form";
 import "./SearchForm.css";
 
 function SearchForm({ setSearchInput }) {
-  const handleSearch = (event) => {
-    setSearchInput(event.target.value);
-  };
+  const { handleContextSearch } = useContext(SearchBeerContext);
 
   return (
     <>
@@ -12,7 +12,7 @@ function SearchForm({ setSearchInput }) {
         <Form.Control
           type="text"
           name="searchInput"
-          onChange={handleSearch}
+          onChange={handleContextSearch}
           placeholder="SEARCH YOUR BEER"
         />
       </Form>
