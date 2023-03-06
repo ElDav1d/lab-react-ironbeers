@@ -1,15 +1,18 @@
-import axios from "axios";
+import { memo } from "react";
 import { useEffect, useState, useContext } from "react";
 import { NewBeerContext } from "../context/newBeer.context";
 import { useNavigate } from "react-router-dom";
 import BeerForm from "../components/BeerForm";
 import Header from "../components/Header/Header";
 import Layout from "../components/Layout/Layout";
+import { createBeerService } from "../services/beers.services";
 
-function NewBeer() {
+const NewBeer = memo(() => {
   const [isSending, setIsSending] = useState(false);
   const redirect = useNavigate();
   const { newContextBeer } = useContext(NewBeerContext);
+
+  console.log(newContextBeer);
 
   useEffect(() => {
     if (newContextBeer) {
@@ -21,15 +24,11 @@ function NewBeer() {
     try {
       setIsSending(true);
 
-      await axios.post(
-        "https://ih-beers-api2.herokuapp.com/beers/new",
-        newContextBeer
-      );
+      await createBeerService(newContextBeer);
 
       setIsSending(false);
       redirect("/beers");
     } catch (error) {
-      console.log(error);
       setIsSending(false);
       redirect("/error");
     }
@@ -43,6 +42,6 @@ function NewBeer() {
       </Layout>
     </>
   );
-}
+});
 
 export default NewBeer;

@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
 
 function BeerForm({ isSending }) {
-  const { beerContextInput, handleContextBeerInput, handleContextBeerSubmit } =
+  const { beerContextInput, handleContextBeerInput, handleBeerContextSubmit } =
     useContext(NewBeerContext);
 
   return (
@@ -94,7 +94,7 @@ function BeerForm({ isSending }) {
       {isSending ? (
         <LoadSpinner hidddenText="Sending new beer" />
       ) : (
-        <Button onClick={handleContextBeerSubmit} disabled={isSending}>
+        <Button onClick={handleBeerContextSubmit} disabled={isSending}>
           ADD NEW
         </Button>
       )}

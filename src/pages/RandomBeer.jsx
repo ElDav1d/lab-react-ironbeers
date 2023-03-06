@@ -1,10 +1,10 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BeerDetail from "../components/BeerDetail";
 import Header from "../components/Header/Header";
 import Layout from "../components/Layout/Layout";
 import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
+import { getRandomBeerService } from "../services/beers.services";
 
 function RandomBeer() {
   const [beer, setBeer] = useState(null);
@@ -16,14 +16,12 @@ function RandomBeer() {
   }, []);
 
   const getData = async () => {
-    const url = `https://ih-beers-api2.herokuapp.com/beers/random`;
     try {
-      const response = await axios.get(url);
+      const response = await getRandomBeerService();
 
       setBeer(response.data);
       setIsFetching(false);
     } catch (error) {
-      console.log(error);
       redirect("/error");
     }
   };

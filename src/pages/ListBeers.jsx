@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import useDebounce from "../hooks/useDebounce";
@@ -8,6 +7,10 @@ import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
 import SearchForm from "../components/SearchForm/SearchForm";
 import BeerList from "../components/BeerList";
 import { SearchBeerContext } from "../context/searchBeer.context";
+import {
+  getAllBeersService,
+  getFilteredBeersService,
+} from "../services/beers.services";
 
 function ListBeers() {
   const { searchContextInput } = useContext(SearchBeerContext);
@@ -19,13 +22,13 @@ function ListBeers() {
     const query = searchContextInput ? `/search?q=${searchContextInput}` : "";
 
     try {
-      const response = await axios.get(
-        `https://ih-beers-api2.herokuapp.com/beers${query}`
-      );
+      const response = await (searchContextInput
+        ? getFilteredBeersService(searchContextInput)
+        : getAllBeersService());
+
       setBeers(response.data);
       setIsFetching(false);
     } catch (error) {
-      console.log(error);
       redirect("/error");
     }
   };
