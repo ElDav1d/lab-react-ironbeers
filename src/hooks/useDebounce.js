@@ -1,19 +1,17 @@
 import { useEffect } from "react";
 
 const useDebounce = (value, delay, callback) => {
-  let handler;
+  let handlerId;
 
   useEffect(() => {
-    handler = setTimeout(() => {
+    handlerId = setTimeout(() => {
       callback();
     }, delay);
 
     return () => {
-      clearTimeout(handler);
+      clearTimeout(handlerId);
     };
   }, [value]);
-
-  return () => handler && clearTimeout(handler);
 };
 
 export default useDebounce;
