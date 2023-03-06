@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { NewBeerContext } from "../context/newBeer.context";
 import { useNavigate } from "react-router-dom";
 import BeerForm from "../components/BeerForm";
 import Header from "../components/Header/Header";
@@ -7,8 +8,8 @@ import Layout from "../components/Layout/Layout";
 
 function NewBeer() {
   const [isSending, setIsSending] = useState(false);
-  const [newBeer, setNewBeer] = useState(null);
   const redirect = useNavigate();
+  const { newBeer } = useContext(NewBeerContext);
 
   useEffect(() => {
     if (newBeer) {
@@ -25,7 +26,6 @@ function NewBeer() {
         newBeer
       );
 
-      setNewBeer(null);
       setIsSending(false);
       redirect("/beers");
     } catch (error) {
@@ -39,7 +39,7 @@ function NewBeer() {
     <>
       <Header />
       <Layout>
-        <BeerForm setNewBeer={setNewBeer} isSending={isSending} />
+        <BeerForm isSending={isSending} />
       </Layout>
     </>
   );

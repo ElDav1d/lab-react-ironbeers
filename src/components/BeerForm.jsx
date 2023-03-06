@@ -1,36 +1,13 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { NewBeerContext } from "../context/newBeer.context";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import LoadSpinner from "../components/LoadSpinner/LoadSpinner";
 
-function BeerForm({ setNewBeer, isSending }) {
-  const cleanState = {
-    name: "",
-    tagline: "",
-    description: "",
-    first_brewed: "",
-    brewers_tips: "",
-    attenuation_level: 0,
-    contributed_by: "",
-  };
-
-  const [beerInput, setBeerInput] = useState(cleanState);
-
-  const handleInput = (event) => {
-    const newBeerInput = { ...beerInput };
-
-    newBeerInput[event.target.name] = event.target.value;
-
-    setBeerInput(newBeerInput);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    setNewBeer(beerInput);
-    setBeerInput(cleanState);
-  };
+function BeerForm({ isSending }) {
+  const { beerInput, handleBeerInput, handleBeerSubmit } =
+    useContext(NewBeerContext);
 
   return (
     <Container as="form">
@@ -40,7 +17,8 @@ function BeerForm({ setNewBeer, isSending }) {
           size="lg"
           type="text"
           name="name"
-          onChange={handleInput}
+          // onChange={handleInput}
+          onChange={handleBeerInput}
           value={beerInput.name}
           disabled={isSending}
         />
@@ -51,7 +29,8 @@ function BeerForm({ setNewBeer, isSending }) {
           size="lg"
           type="text"
           name="tagline"
-          onChange={handleInput}
+          // onChange={handleInput}
+          onChange={handleBeerInput}
           value={beerInput.tagline}
           disabled={isSending}
         />
@@ -64,7 +43,8 @@ function BeerForm({ setNewBeer, isSending }) {
           name="description"
           rows="10"
           cols="50"
-          onChange={handleInput}
+          // onChange={handleInput}
+          onChange={handleBeerInput}
           value={beerInput.description}
           disabled={isSending}
         />
@@ -75,7 +55,8 @@ function BeerForm({ setNewBeer, isSending }) {
           size="lg"
           type="text"
           name="first_brewed"
-          onChange={handleInput}
+          // onChange={handleInput}
+          onChange={handleBeerInput}
           value={beerInput.first_brewed}
           disabled={isSending}
         />
@@ -86,7 +67,8 @@ function BeerForm({ setNewBeer, isSending }) {
           size="lg"
           type="text"
           name="brewers_tips"
-          onChange={handleInput}
+          // onChange={handleInput}
+          onChange={handleBeerInput}
           value={beerInput.brewers_tips}
           disabled={isSending}
         />
@@ -97,7 +79,8 @@ function BeerForm({ setNewBeer, isSending }) {
           size="lg"
           type="number"
           name="attenuation_level"
-          onChange={handleInput}
+          // onChange={handleInput}
+          onChange={handleBeerInput}
           value={beerInput.attenuation_level}
           disabled={isSending}
         />
@@ -108,7 +91,8 @@ function BeerForm({ setNewBeer, isSending }) {
           size="lg"
           type="text"
           name="contributed_by"
-          onChange={handleInput}
+          // onChange={handleInput}
+          onChange={handleBeerInput}
           value={beerInput.contributed_by}
           disabled={isSending}
         />
@@ -117,7 +101,11 @@ function BeerForm({ setNewBeer, isSending }) {
       {isSending ? (
         <LoadSpinner hidddenText="Sending new beer" />
       ) : (
-        <Button onClick={handleSubmit} disabled={isSending}>
+        <Button
+          // onClick={handleSubmit}
+          onClick={handleBeerSubmit}
+          disabled={isSending}
+        >
           ADD NEW
         </Button>
       )}
